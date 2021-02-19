@@ -20,11 +20,12 @@ class HomeCollection extends Collection {
             let elem = elems[i];
 
             let item = glib.DataItem.new();
-            item.title = elem.attr('title');
-            item.link = pageUrl.href(elem.attr('href'));
-            let img = elem.querySelector('img');
-            item.picture = pageUrl.href(elem.attr('data-original'));
-            item.subtitle = elem.querySelector('.pic_text').text;
+            let img_link = elem.querySelector('.vodlist_thumb');
+
+            item.title = img_link.attr('title');
+            item.link = pageUrl.href(img_link.attr('href'));
+            item.picture = pageUrl.href(img_link.attr('data-original'));
+            item.subtitle = elem.querySelector('.vodlist_sub').text.trim();
             results.push(item);
         }
         return results;
