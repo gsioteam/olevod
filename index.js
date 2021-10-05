@@ -12,7 +12,7 @@ class HomeCollection extends Collection {
         let pageUrl = new PageURL(url);
 
         let doc = await super.fetch(url);
-        let elems = doc.querySelectorAll('.vodlist a.vodlist_thumb');
+        let elems = doc.querySelectorAll('.vodlist li.vodlist_item');
 
         let results = [];
 
