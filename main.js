@@ -37,7 +37,7 @@ class MainController extends Controller {
         this.reload();
     }
 
-    onLoadMore() {
+    async onLoadMore() {
         this.setState(() => {
             this.data.loading = true;
         });
