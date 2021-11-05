@@ -41,11 +41,20 @@ class MainController extends Controller {
         this.setState(() => {
             this.data.loading = true;
         });
-        setTimeout(() => {
-            this.setState(() => {
-                this.data.loading = false;
-            });
-        }, 5000);
+
+        let page = this.page + 1;
+        let url = this.makeURL(page);
+        let res = await fetch(url);
+        let html = await res.text();
+        this.page = page;
+        let items = this.parseHtml(html, url);
+
+        this.setState(()=>{
+            for (let item of items) {
+                this.data.list.push(item);
+            }
+            this.data.loading = false;
+        });
     }
 
     async reload() {
